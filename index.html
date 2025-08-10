@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon - Sắp Ra Mắt</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Animated background particles */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+        
+        .particle:nth-child(odd) {
+            background: rgba(64, 224, 208, 0.3);
+        }
+        
+        .particle:nth-child(3n) {
+            background: rgba(255, 105, 180, 0.3);
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Main container */
+        .container {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        /* Logo/Brand */
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+            animation: pulse 2s infinite;
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+        }
+        
+        .logo::before {
+            content: '🚀';
+            font-size: 40px;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        /* Main heading */
+        .main-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            animation: slideInUp 1s ease-out;
+        }
+        
+        .subtitle {
+            font-size: clamp(1.2rem, 4vw, 2rem);
+            color: #a0a9c0;
+            font-weight: 300;
+            margin-bottom: 30px;
+            animation: slideInUp 1s ease-out 0.2s both;
+        }
+        
+        .description {
+            font-size: 18px;
+            color: #8892b0;
+            max-width: 600px;
+            line-height: 1.6;
+            margin-bottom: 50px;
+            animation: slideInUp 1s ease-out 0.4s both;
+        }
+        
+        /* Countdown timer */
+        .countdown {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: slideInUp 1s ease-out 0.6s both;
+        }
+        
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px 20px;
+            min-width: 100px;
+            transition: all 0.3s ease;
+        }
+        
+        .countdown-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+        
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .countdown-label {
+            font-size: 0.9rem;
+            color: #8892b0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Email signup */
+        .email-signup {
+            max-width: 400px;
+            width: 100%;
+            margin-bottom: 40px;
+            animation: slideInUp 1s ease-out 0.8s both;
+        }
+        
+        .email-form {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .email-input {
+            flex: 1;
+            min-width: 200px;
+            padding: 15px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .email-input::placeholder {
+            color: #8892b0;
+        }
+        
+        .email-input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .notify-btn {
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 120px;
+        }
+        
+        .notify-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        /* Social links */
+        .social-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            animation: slideInUp 1s ease-out 1s both;
+        }
+        
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #8892b0;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px);
+            color: #667eea;
+            border-color: rgba(102, 126, 234, 0.3);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+        }
+        
+        /* Animations */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .countdown {
+                gap: 15px;
+            }
+            
+            .countdown-item {
+                padding: 20px 15px;
+                min-width: 80px;
+            }
+            
+            .countdown-number {
+                font-size: 2rem;
+            }
+            
+            .email-form {
+                flex-direction: column;
+            }
+            
+            .email-input {
+                min-width: auto;
+            }
+            
+            .social-links {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated particles -->
+    <div class="particles" id="particles"></div>
+    
+    <div class="container">
+        <div class="logo"></div>
+        
+        <h1 class="main-title">COMING SOON</h1>
+        <h2 class="subtitle">Sắp Ra Mắt</h2>
+        
+        <p class="description">
+            Chúng tôi đang phát triển một trải nghiệm tuyệt vời dành cho bạn. 
+            Hãy đăng ký để nhận thông báo khi chúng tôi chính thức ra mắt!
+        </p>
+        
+        <!-- Countdown Timer -->
+        <div class="countdown" id="countdown">
+            <div class="countdown-item">
+                <span class="countdown-number" id="days">00</span>
+                <span class="countdown-label">Ngày</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="hours">00</span>
+                <span class="countdown-label">Giờ</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="minutes">00</span>
+                <span class="countdown-label">Phút</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="seconds">00</span>
+                <span class="countdown-label">Giây</span>
+            </div>
+        </div>
+        
+        <!-- Email Signup -->
+        <div class="email-signup">
+            <form class="email-form" id="emailForm">
+                <input 
+                    type="email" 
+                    class="email-input" 
+                    placeholder="Nhập email của bạn..."
+                    required
+                    id="emailInput"
+                >
+                <button type="submit" class="notify-btn">Thông Báo</button>
+            </form>
+        </div>
+        
+        <!-- Social Links -->
+        <div class="social-links">
+            <a href="#" class="social-link">📘</a>
+            <a href="#" class="social-link">📷</a>
+            <a href="#" class="social-link">🐦</a>
+            <a href="#" class="social-link">💼</a>
+        </div>
+    </div>
+    
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Countdown timer
+        function updateCountdown() {
+            // Set target date (30 days from now)
+            const targetDate = new Date();
+            targetDate.setDate(targetDate.getDate() + 30);
+            
+            const now = new Date().getTime();
+            const distance = targetDate.getTime() - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            
+            if (distance < 0) {
+                clearInterval(countdownTimer);
+                document.getElementById('countdown').innerHTML = '<h2 style="color: #667eea;">🎉 Đã Ra Mắt!</h2>';
+            }
+        }
+        
+        // Email form handling
+        document.getElementById('emailForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('emailInput').value;
+            
+            if (email) {
+                // Simulate success
+                const button = document.querySelector('.notify-btn');
+                const originalText = button.textContent;
+                
+                button.textContent = '✓ Đã Đăng Ký!';
+                button.style.background = 'linear-gradient(135deg, #4CAF50 0%, #45a049 100%)';
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+                    document.getElementById('emailInput').value = '';
+                }, 2000);
+            }
+        });
+        
+        // Initialize
+        createParticles();
+        updateCountdown();
+        const countdownTimer = setInterval(updateCountdown, 1000);
+        
+        // Add smooth scrolling and interaction effects
+        document.addEventListener('mousemove', function(e) {
+            const particles = document.querySelectorAll('.particle');
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            particles.forEach((particle, index) => {
+                if (index % 3 === 0) {
+                    const speed = (index % 5) + 1;
+                    particle.style.transform = `translate(${mouseX * speed}px, ${mouseY * speed}px)`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
